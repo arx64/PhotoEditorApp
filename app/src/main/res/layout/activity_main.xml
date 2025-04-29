@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background">
+
+    <!-- Image Preview dengan CardView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        android:progressTint="@color/primaryColor"
+        android:progressBackgroundTint="@android:color/transparent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Button Pilih Gambar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPickImage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="PILIH GAMBAR"
+        android:textAllCaps="false"
+        android:layout_marginBottom="20dp"
+        app:icon="@drawable/ic_add_photo"
+        app:iconTint="@android:color/white"
+        app:backgroundTint="@color/primaryColor"
+        android:textColor="@android:color/white"/>
+
+    <!-- Brightness Control -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BRIGHTNESS"
+            android:textColor="@color/textPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <SeekBar
+            android:id="@+id/seekBarBrightness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="200"
+            android:progress="100"
+            android:thumbTint="@color/primaryColor"
+            android:progressTint="@color/primaryLight"/>
+    </LinearLayout>
+
+    <!-- Filter Buttons dengan ConstraintLayout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <!-- Tombol Grayscale -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrayscale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Grayscale"
+            android:textColor="@color/primaryColor"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/primaryColor"
+            android:layout_marginEnd="4dp"
+            android:padding="12dp"
+            android:minWidth="120dp"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSepia"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Tombol Sepia -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSepia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sepia"
+            android:textColor="@color/primaryColor"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/primaryColor"
+            android:layout_marginStart="4dp"
+            android:padding="12dp"
+            android:minWidth="120dp"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/btnGrayscale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Tombol Reset (Tengah Bawah) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:textColor="@color/primaryColor"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/primaryColor"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:minWidth="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnGrayscale" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
